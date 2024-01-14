@@ -1,4 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:zoom_meet/resources/auth_methods.dart';
 import 'package:zoom_meet/widgets/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -9,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthMethods _authMethods = AuthMethods();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,12 +27,17 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical :40.0),
+            padding: const EdgeInsets.symmetric(vertical: 40.0),
             child: Image.asset('assets/images/onboarding.jpg'),
           ),
           CustomButton(
             text: 'Sign In',
-            onPressed: () {},
+            onPressed: () async {
+              bool res = await _authMethods.signInWithGoogle(context);
+              if (res) {
+                Navigator.pushNamed(context, '/homescreen');
+              }
+            },
           ),
         ],
       ),
