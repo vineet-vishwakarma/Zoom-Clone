@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zoom_meet/screens/meeting_screen.dart';
 import 'package:zoom_meet/utils/colors.dart';
-import 'package:zoom_meet/widgets/home_meeting_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,6 +17,10 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  List<Widget> pages = [
+    MeetingScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,59 +29,47 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: backgroundColor,
         title: const Text('Meet & Chat'),
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              HomeMeetingButton(
-                onPressed: () {},
-                text: 'New Meeting',
-                icon: Icons.videocam,
+      body: pages[_page],
+      bottomNavigationBar: Theme(
+        data: ThemeData(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+        ),
+        child: BottomNavigationBar(
+          onTap: onPageChanged,
+          currentIndex: _page,
+          unselectedFontSize: 14,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: footerColor,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.comment,
               ),
-              HomeMeetingButton(
-                onPressed: () {},
-                text: 'Join Meeting',
-                icon: Icons.add_box_rounded,
+              label: 'Meet & Chat',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.lock_clock,
               ),
-            ],
-          )
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onPageChanged,
-        currentIndex: _page,
-        unselectedFontSize: 14,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: footerColor,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.comment,
+              label: 'Meetings',
             ),
-            label: 'Meet & Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.lock_clock,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person_outline,
+              ),
+              label: 'Contacts',
             ),
-            label: 'Meetings',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person_outline,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.settings_outlined,
+              ),
+              label: 'Settings',
             ),
-            label: 'Contacts',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings_outlined,
-            ),
-            label: 'Settings',
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:zoom_meet/firebase_options.dart';
 import 'package:zoom_meet/resources/auth_methods.dart';
 import 'package:zoom_meet/screens/home_screen.dart';
 import 'package:zoom_meet/screens/login_screen.dart';
+import 'package:zoom_meet/screens/video_call_screen.dart';
 import 'package:zoom_meet/utils/colors.dart';
 
 void main() async {
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
+        '/videocall':(context) => const VideoCallScreen(),
       },
       home: StreamBuilder(
         stream: AuthMethods().authChanges,
