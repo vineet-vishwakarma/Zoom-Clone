@@ -8,6 +8,7 @@ class FirestoreMethods {
       .collection('users')
       .doc(_auth.currentUser!.uid)
       .collection('meetings')
+      .orderBy('createdAt', descending: true)
       .snapshots();
   void addToMeetingHistory(String meetingName) async {
     try {
@@ -24,5 +25,16 @@ class FirestoreMethods {
     } catch (e) {
       print(e);
     }
+  }
+
+  void deleteMeetingHistory(String id) async {
+    try {
+      await _firestore
+          .collection('users')
+          .doc(_auth.currentUser!.uid)
+          .collection('meetings')
+          .doc(id)
+          .delete();
+    } catch (e) {}
   }
 }

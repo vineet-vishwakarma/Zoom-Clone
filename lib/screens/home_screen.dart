@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:zoom_meet/resources/auth_methods.dart';
+import 'package:zoom_meet/screens/contacts_screen.dart';
 import 'package:zoom_meet/screens/history_meeting_screen.dart';
 import 'package:zoom_meet/screens/meeting_screen.dart';
+import 'package:zoom_meet/screens/settings_screen.dart';
 import 'package:zoom_meet/utils/colors.dart';
-import 'package:zoom_meet/widgets/custom_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,18 +23,13 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> pages = [
     MeetingScreen(),
     const HistoryMeetingScreen(),
-    const Text('Contacts'),
-    CustomButton(text: 'Log Out', onPressed: () => AuthMethods().logOut()),
+    const ContactSCreen(),
+    const SettingsScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: backgroundColor,
-        title: const Text('Meet & Chat'),
-      ),
       body: pages[_page],
       bottomNavigationBar: Theme(
         data: ThemeData(

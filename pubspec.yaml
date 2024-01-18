@@ -29,18 +29,40 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cloud_firestore: ^4.14.0
+  contacts_service: ^0.6.3
   cupertino_icons: ^1.0.2
   firebase_auth: ^4.16.0
   firebase_core: ^2.24.2
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
   google_sign_in: ^6.2.1
   intl: ^0.19.0
   jitsi_meet_flutter_sdk: ^0.1.9
+  permission_handler: ^11.1.0
+  uuid: ^4.3.3
+
 dev_dependencies:
   flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/ZoomClone-Logo-white.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/images/ZoomClone-Logo-white.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/images/ZoomClone-Logo-white.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/images/ZoomClone-Logo-white.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
